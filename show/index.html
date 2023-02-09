@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>javascript</title>
+    <link rel="stylesheet" href="./prism.css" />
+    <script src="./prism.js"></script>
+  </head>
+  <body>
+    <pre>
+      <code class="language-javascript" 
+      id="editor" 
+      contenteditable="true" 
+      style="outline:none">
+        const address = {
+          country: "AR",
+          state: "CABA",
+          street: "Av. Paseo Colon 850",
+        };
+
+        console.log("hola");
+    </code>
+    </pre>
+    <button id="run">Run</button>
+    <div id="output"></div>
+    <script type="text/javascript">
+      const output = document.getElementById("output");
+      function print(...args) {
+        console.log("print");
+        output.insertAdjacentText("beforeend", args.join(" "));
+        output.appendChild(document.createElement("br"));
+      }
+
+      const editor = document.getElementById("editor");
+      const button = document.getElementById("run");
+      button.addEventListener("click", () => {
+        eval(editor.innerText);
+        Prism.highlightElement(editor);
+      });
+    </script>
+  </body>
+</html>
